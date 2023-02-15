@@ -58,7 +58,7 @@ class AutoscalingScheduler(object):
         # Stop autoscaling instance
         for instance_id in instance_id_list:
             try:
-                self.ec2.stop_instances(InstanceIds=[instance_id])
+                self.ec2.terminate_instances(InstanceIds=[instance_id])
                 print("Stop autoscaling instances {0}".format(instance_id))
             except ClientError as exc:
                 ec2_exception("autoscaling group", instance_id, exc)

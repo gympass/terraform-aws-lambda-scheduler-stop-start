@@ -49,7 +49,7 @@ class InstanceScheduler(object):
                 if not self.asg.describe_auto_scaling_instances(
                     InstanceIds=[instance_id]
                 )["AutoScalingInstances"]:
-                    self.ec2.stop_instances(InstanceIds=[instance_id])
+                    self.ec2.terminate_instances(InstanceIds=[instance_id])
                     print("Stop instances {0}".format(instance_id))
             except ClientError as exc:
                 ec2_exception("instance", instance_id, exc)
